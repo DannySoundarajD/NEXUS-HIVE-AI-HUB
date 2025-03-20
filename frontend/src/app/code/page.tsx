@@ -77,7 +77,7 @@ export default function CodeAssistant() {
   ];
 
   return (
-    <div className="flex flex-col min-h-screen  bg-gradient-to-br from-indigo-900 via-purple-900 to-gray-900 text-white">
+    <div className="flex flex-col min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-gray-900 text-white">
       {/* Fixed top navigation bar */}
       <div className="fixed top-0 left-0 w-full z-10 bg-gray-900 bg-opacity-90 backdrop-blur-md border-b border-indigo-900 shadow-lg h-[120px]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between pt-[70px]">
@@ -89,7 +89,6 @@ export default function CodeAssistant() {
               NEXUS HIVE
             </span>
           </div>
-          {/* Removed the model selector from here */}
         </div>
       </div>
 
@@ -107,43 +106,10 @@ export default function CodeAssistant() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           {/* Left panel - Code Input */}
           <div className="lg:col-span-5 flex flex-col space-y-4">
-            {/* Language selection and model selection - now side by side */}
-            <div className="bg-gray-800 bg-opacity-50 rounded-xl p-4 border border-gray-700 shadow-lg transform transition-all duration-300 hover:shadow-xl hover:border-indigo-700">
-              <div className="flex flex-wrap items-center gap-2 mb-4">
-                {/* Language selector */}
-                <div className="flex items-center space-x-1 bg-gray-700 bg-opacity-70 rounded-lg px-3 py-2 transition-all duration-300 hover:bg-gray-600">
-                  <FaTerminal className="text-cyan-400" />
-                  <select
-                    value={language}
-                    onChange={(e) => setLanguage(e.target.value)}
-                    className="bg-transparent focus:outline-none text-white"
-                  >
-                    {languageOptions.map((lang) => (
-                      <option key={lang} value={lang} className="bg-gray-700 text-white">
-                        {lang.charAt(0).toUpperCase() + lang.slice(1)}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                
-                {/* Model selector - moved here */}
-                <div className="flex items-center space-x-2 bg-gray-700 bg-opacity-70 rounded-lg mx-10 px-3 py-2 transition-all duration-300 hover:bg-gray-600">
-                  <FaBrain className="text-indigo-400" />
-                  <select
-                    value={selectedModel}
-                    onChange={(e) => setSelectedModel(e.target.value)}
-                    className="bg-transparent focus:outline-none text-white"
-                  >
-                    {models.map((model) => (
-                      <option key={model.id} value={model.id} className="bg-gray-700 text-white">
-                        {model.name}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              <div className="flex flex-wrap gap-2">
+            {/* Selection controls */}
+            <div className="bg-gray-900/70 backdrop-blur-xl border border-gray-800 rounded-xl p-4 shadow-lg">
+              {/* Analysis type buttons */}
+              <div className="flex flex-wrap gap-2 mb-4">
                 <button
                   onClick={() => setAnalysisType('analyze')}
                   className={`px-4 py-2 rounded-lg flex items-center gap-2 transition-all duration-300 ${
@@ -178,47 +144,102 @@ export default function CodeAssistant() {
                   Debug
                 </button>
               </div>
+              
+              {/* Language and Model selectors - styled like Document Generator */}
+              <div className="grid grid-cols-2 gap-4">
+                <div className="relative">
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Programming Language
+                  </label>
+                  <div className="relative">
+                    <select
+                      value={language}
+                      onChange={(e) => setLanguage(e.target.value)}
+                      className="w-full p-3 bg-gray-800/80 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 text-gray-200 appearance-none"
+                    >
+                      {languageOptions.map((lang) => (
+                        <option key={lang} value={lang} className="bg-gray-700 text-white">
+                          {lang.charAt(0).toUpperCase() + lang.slice(1)}
+                        </option>
+                      ))}
+                    </select>
+                    <div className="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none">
+                      <svg className="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="relative">
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    AI Engine
+                  </label>
+                  <div className="relative">
+                    <select
+                      value={selectedModel}
+                      onChange={(e) => setSelectedModel(e.target.value)}
+                      className="w-full p-3 bg-gray-800/80 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 text-gray-200 appearance-none"
+                    >
+                      {models.map((model) => (
+                        <option key={model.id} value={model.id} className="bg-gray-700 text-white">
+                          {model.name}
+                        </option>
+                      ))}
+                    </select>
+                    <div className="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none">
+                      <svg className="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            {/* Code input */}
-            <div className="bg-gray-800 bg-opacity-50 rounded-xl border border-gray-700 shadow-lg flex flex-col flex-1 transition-all duration-300 hover:shadow-xl hover:border-indigo-700">
-              <div className="p-4 border-b border-gray-700">
-                <h2 className="font-medium flex items-center">
-                  <FaCode className="mr-2 text-cyan-400" />
-                  Code Input
-                </h2>
+            {/* Code input - styled like Document Generator */}
+            <div className="bg-gray-900/70 backdrop-blur-xl border border-gray-800 rounded-xl p-4 shadow-lg flex flex-col flex-1">
+              <div className="flex items-center gap-3 mb-4">
+                <FaTerminal className="text-cyan-400 text-lg" />
+                <h2 className="text-xl font-semibold text-white">Code Input</h2>
               </div>
-              <textarea
-                value={code}
-                onChange={(e) => setCode(e.target.value)}
-                placeholder={`Enter your ${language} code here...`}
-                className="flex-1 p-4 bg-gray-900 bg-opacity-50 focus:outline-none focus:ring-1 focus:ring-indigo-500 text-white font-mono resize-none min-h-96 transition-all duration-300"
-              />
+              
+              <div className="relative flex-1">
+                <div className="absolute top-3 right-3 bg-gray-800/80 px-2 py-1 rounded text-xs text-gray-400 font-mono">
+                  {language}
+                </div>
+                <textarea
+                  value={code}
+                  onChange={(e) => setCode(e.target.value)}
+                  placeholder={`Enter your ${language} code here...`}
+                  className="w-full h-96 p-4 bg-gray-800/80 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 text-gray-200 font-mono text-sm resize-none"
+                />
+              </div>
             </div>
 
             {/* Conditional inputs based on analysis type */}
             {analysisType === 'optimize' && (
-              <div className="bg-gray-800 bg-opacity-50 rounded-xl p-4 border border-gray-700 shadow-lg transform transition-all duration-300 hover:shadow-xl hover:border-indigo-700 animate-fadeIn">
-                <label className="text-sm text-gray-300 mb-2 block">Optimization Goal</label>
+              <div className="bg-gray-900/70 backdrop-blur-xl border border-gray-800 rounded-xl p-4 shadow-lg animate-fadeIn">
+                <label className="block text-sm font-medium text-gray-300 mb-2">Optimization Goal</label>
                 <input
                   type="text"
                   value={optimizationGoal}
                   onChange={(e) => setOptimizationGoal(e.target.value)}
                   placeholder="e.g., performance, readability, memory usage"
-                  className="w-full p-3 border border-gray-600 rounded-lg bg-gray-900 bg-opacity-50 focus:outline-none focus:ring-1 focus:ring-indigo-500 text-white transition-all duration-300 hover:border-indigo-500"
+                  className="w-full p-3 border border-gray-700 rounded-lg bg-gray-800/80 focus:outline-none focus:ring-2 focus:ring-cyan-500 text-white"
                 />
               </div>
             )}
 
             {analysisType === 'debug' && (
-              <div className="bg-gray-800 bg-opacity-50 rounded-xl p-4 border border-gray-700 shadow-lg transform transition-all duration-300 hover:shadow-xl hover:border-indigo-700 animate-fadeIn">
-                <label className="text-sm text-gray-300 mb-2 block">Error Message (optional)</label>
+              <div className="bg-gray-900/70 backdrop-blur-xl border border-gray-800 rounded-xl p-4 shadow-lg animate-fadeIn">
+                <label className="block text-sm font-medium text-gray-300 mb-2">Error Message (optional)</label>
                 <input
                   type="text"
                   value={errorMessage}
                   onChange={(e) => setErrorMessage(e.target.value)}
                   placeholder="Paste error message here"
-                  className="w-full p-3 border border-gray-600 rounded-lg bg-gray-900 bg-opacity-50 focus:outline-none focus:ring-1 focus:ring-indigo-500 text-white transition-all duration-300 hover:border-indigo-500"
+                  className="w-full p-3 border border-gray-700 rounded-lg bg-gray-800/80 focus:outline-none focus:ring-2 focus:ring-cyan-500 text-white"
                 />
               </div>
             )}
@@ -227,41 +248,44 @@ export default function CodeAssistant() {
             <button
               onClick={handleCodeAnalysis}
               disabled={loading || !code.trim()}
-              className={`p-4 rounded-lg transition-all duration-300 flex items-center gap-2 justify-center ${
-                loading || !code.trim() 
-                  ? 'bg-gray-700 text-gray-400 cursor-not-allowed' 
-                  : 'bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl hover:scale-105'
+              className={`w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white p-3 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 font-medium text-lg disabled:opacity-50 disabled:cursor-not-allowed shadow-lg ${
+                loading || !code.trim() ? 'opacity-50 cursor-not-allowed' : ''
               }`}
             >
               {loading ? (
-                <FaSpinner className="animate-spin" />
+                <>
+                  <FaSpinner className="animate-spin" />
+                  <span>Processing...</span>
+                </>
               ) : (
-                {
-                  'analyze': <FaSearch />,
-                  'optimize': <FaRocket />,
-                  'debug': <FaBug />
-                }[analysisType]
+                <>
+                  {
+                    {
+                      'analyze': <FaSearch />,
+                      'optimize': <FaRocket />,
+                      'debug': <FaBug />
+                    }[analysisType]
+                  }
+                  <span>{analysisType.charAt(0).toUpperCase() + analysisType.slice(1)} Code</span>
+                </>
               )}
-              {loading
-                ? 'Processing...'
-                : `${analysisType.charAt(0).toUpperCase() + analysisType.slice(1)} Code`}
             </button>
           </div>
 
           {/* Right panel - Results */}
           <div className="lg:col-span-7 flex flex-col">
-            <div className="bg-gray-800 bg-opacity-50 rounded-xl border border-gray-700 shadow-lg flex flex-col flex-1 transition-all duration-300 hover:shadow-xl hover:border-indigo-700">
+            <div className="bg-gray-900/70 backdrop-blur-xl border border-gray-800 rounded-xl shadow-lg flex flex-col flex-1">
               <div className="p-4 border-b border-gray-700 flex items-center justify-between">
-                <h2 className="font-medium flex items-center">
-                  <FaLightbulb className="mr-2 text-yellow-400" />
-                  AI Insights
-                </h2>
+                <div className="flex items-center gap-3">
+                  <FaLightbulb className="text-cyan-400 text-lg" />
+                  <h2 className="text-xl font-semibold text-white">AI Insights</h2>
+                </div>
                 <div className="text-sm text-gray-400">
                   {result && `Using ${selectedModel}`}
                 </div>
               </div>
               
-              <div className="flex-1 overflow-auto p-4 min-h-96">
+              <div className="flex-1 overflow-auto p-4 bg-gray-800/80 rounded-lg border border-gray-700 m-4 shadow-inner">
                 {result ? (
                   <div className="prose prose-invert max-w-none animate-fadeIn">
                     <ReactMarkdown
@@ -273,7 +297,7 @@ export default function CodeAssistant() {
                               style={tomorrow}
                               language={match[1]}
                               PreTag="div"
-                              className="rounded-lg border border-gray-700 my-4 shadow-lg transition-all duration-300 hover:shadow-xl hover:border-indigo-600"
+                              className="rounded-lg border border-gray-700 my-4 shadow-lg"
                               {...props}
                             >
                               {String(children).replace(/\n$/, '')}
@@ -291,12 +315,12 @@ export default function CodeAssistant() {
                   </div>
                 ) : (
                   <div className="flex flex-col items-center justify-center h-full text-gray-400 space-y-4">
-                    <div className="w-20 h-20 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 flex items-center justify-center opacity-50 transition-all duration-500 hover:scale-110 hover:opacity-70">
+                    <div className="w-16 h-16 rounded-full bg-gray-700/50 flex items-center justify-center">
                       {
                         {
-                          'analyze': <FaSearch size={32} />,
-                          'optimize': <FaRocket size={32} />,
-                          'debug': <FaBug size={32} />
+                          'analyze': <FaSearch size={24} />,
+                          'optimize': <FaRocket size={24} />,
+                          'debug': <FaBug size={24} />
                         }[analysisType]
                       }
                     </div>
@@ -312,7 +336,11 @@ export default function CodeAssistant() {
           </div>
         </div>
       </div>
+      
+      {/* Footer */}
+      <div className="mt-6 text-center text-gray-400 text-sm">
+        <p>Powered by NEXUS HIVE AI Engine &copy; {new Date().getFullYear()}</p>
+      </div>
     </div>
   );
 }
-

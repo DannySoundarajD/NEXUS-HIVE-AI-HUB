@@ -1,9 +1,11 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, Suspense } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase/config';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { OrbitControls, useGLTF, PerspectiveCamera } from '@react-three/drei';
 import { 
   Code2, 
   Code, 
@@ -11,8 +13,63 @@ import {
   FileCode,
   Zap, 
   ChevronDown,
-  ExternalLink
+  ExternalLink,
+  ZoomIn,
+  ZoomOut
 } from 'lucide-react';
+
+// 3D model component with balanced scaling and natural rotation
+const Model = ({ path, position = [0, 0, 0] }) => {
+  const { scene } = useGLTF(`/models/${path}`);
+  const groupRef = useRef();
+  
+  // Auto-rotate model at a gentle pace
+  useFrame(() => {
+    if (groupRef.current) {
+      groupRef.current.rotation.y += 0.003;
+    }
+  });
+
+  return (
+    <group 
+      ref={groupRef} 
+      position={position}
+    >
+      <primitive object={scene} />
+    </group>
+  );
+};
+
+// Improved camera controller with balanced initial position
+const CameraController = ({ modelType }) => {
+  const { camera, gl } = useThree();
+  const controls = useRef();
+  
+  useEffect(() => {
+    if (controls.current) {
+      // Set appropriate camera position based on model type
+      switch(modelType) {
+        case 'robot':
+          camera.position.set(0, 3, 3);
+          break;
+        case 'desktop':
+          camera.position.set(0, 5, 15);
+          break;
+        case 'document':
+          camera.position.set(3, 3, 3);
+          break;
+        case 'gpu':
+          camera.position.set(0, 6, 0);
+          break;
+        default:
+          camera.position.set(0, 0, 4);
+      }
+      controls.current.update();
+    }
+  }, [camera, modelType]);
+
+  return <OrbitControls ref={controls} enablePan={true} enableZoom={true} />;
+};
 
 const NexusHiveAbout = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -56,7 +113,7 @@ const NexusHiveAbout = () => {
     }
   }, [router, pathname]);
 
-  // AI tools available in Nexus Hive with full details
+  // AI tools available in Nexus Hive with balanced model settings
   const aiTools = [
     {
       id: 'chat-assistant',
@@ -64,6 +121,8 @@ const NexusHiveAbout = () => {
       description: 'Our Mixtral-8x7B-powered conversational agent provides real-time assistance with coding queries, software best practices, and general AI-powered research. It understands context, provides intelligent responses, and can generate code snippets, explanations, and debugging solutions instantly.',
       icon: <MessageSquare className="h-12 w-12 text-blue-500" />,
       path: '/chat',
+      modelPath: 'ultron (2).glb',  // Updated path here
+      modelType: 'robot',
       color: 'blue',
       bgClass: 'bg-gradient-to-r from-blue-600 to-indigo-600',
       hoverBgClass: 'hover:from-blue-700 hover:to-indigo-700',
@@ -76,6 +135,8 @@ const NexusHiveAbout = () => {
       description: 'This intelligent coding assistant analyzes, debugs, and improves code across 10+ programming languages. It detects syntax errors, suggests performance optimizations, and identifies security vulnerabilities while recommending best practices to enhance software quality and reduce debugging time.',
       icon: <Code className="h-12 w-12 text-emerald-500" />,
       path: '/code',
+      modelPath: 'desktop.glb',
+      modelType: 'desktop',
       color: 'emerald',
       bgClass: 'bg-gradient-to-r from-emerald-600 to-teal-600',
       hoverBgClass: 'hover:from-emerald-700 hover:to-teal-700',
@@ -88,6 +149,8 @@ const NexusHiveAbout = () => {
       description: 'Automate your documentation process with our AI tool that analyzes code structure, functions, and dependencies to generate comprehensive documentation. Create function descriptions, usage examples, and parameter details in Markdown format that integrates seamlessly with repositories, wikis, or technical reports.',
       icon: <FileCode className="h-12 w-12 text-amber-500" />,
       path: '/docgen',
+      modelPath: 'document.glb',
+      modelType: 'document',
       color: 'amber',
       bgClass: 'bg-gradient-to-r from-amber-600 to-orange-600',
       hoverBgClass: 'hover:from-amber-700 hover:to-orange-700',
@@ -100,6 +163,8 @@ const NexusHiveAbout = () => {
       description: 'Transform natural language prompts into functional code in your desired programming language. Our AI tool generates code that follows best practices and can be downloaded in suitable file formats like .js, .py, .cpp, or .java. Perfect for beginners, rapid prototyping, and AI-assisted development.',
       icon: <Code2 className="h-12 w-12 text-rose-500" />,
       path: '/nlptocode',
+      modelPath: 'gpu.glb',
+      modelType: 'gpu',
       color: 'rose',
       bgClass: 'bg-gradient-to-r from-rose-600 to-pink-600',
       hoverBgClass: 'hover:from-rose-700 hover:to-pink-700',
@@ -108,7 +173,7 @@ const NexusHiveAbout = () => {
     }
   ];
 
-  // Set up intersection observer for animations - Modified to reset animations when elements leave viewport
+  // Set up intersection observer for animations
   useEffect(() => {
     if (isLoading) return;
     
@@ -163,98 +228,21 @@ const NexusHiveAbout = () => {
     }
   };
 
-  // 3D placeholder component
-  const Tool3DPlaceholder = ({ color, name }) => {
-    // Convert color name to hex code for more reliable styling
-    const colorMap = {
-      blue: '#3b82f6',
-      emerald: '#10b981',
-      amber: '#f59e0b',
-      rose: '#f43f5e'
-    };
-    
-    const hexColor = colorMap[color] || colorMap.blue;
-    const lightColor = `${hexColor}33`; // Adding transparency for lighter version
-    
+  // Improved 3D model viewer with full-screen capability
+  const Model3DViewer = ({ modelPath, modelType }) => {
     return (
-      <div className="relative w-full h-64 md:h-96 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 shadow-lg">
-        <svg 
-          viewBox="0 0 400 300" 
-          className="w-full h-full"
-          style={{ background: `linear-gradient(135deg, ${lightColor}, transparent)` }}
-        >
-          {/* Base Platform */}
-          <rect x="100" y="200" width="200" height="20" rx="2" fill={hexColor} opacity="0.7" />
-          
-          {/* Main 3D Object - varies based on tool type */}
-          {name === 'AI Chat Assistant' && (
-            <>
-              <rect x="160" y="100" width="80" height="100" rx="10" fill={hexColor} opacity="0.7" />
-              <circle cx="200" cy="125" r="15" fill="white" opacity="0.8" />
-              <rect x="170" y="150" width="60" height="10" rx="5" fill="white" opacity="0.8" />
-              <rect x="170" y="170" width="40" height="10" rx="5" fill="white" opacity="0.8" />
-            </>
-          )}
-          
-          {name === 'AI Code Assistant' && (
-            <>
-              <rect x="150" y="100" width="100" height="100" fill={hexColor} opacity="0.7" />
-              <line x1="165" y1="120" x2="235" y2="120" stroke="white" strokeWidth="2" />
-              <line x1="165" y1="140" x2="215" y2="140" stroke="white" strokeWidth="2" />
-              <line x1="165" y1="160" x2="225" y2="160" stroke="white" strokeWidth="2" />
-              <line x1="165" y1="180" x2="195" y2="180" stroke="white" strokeWidth="2" />
-            </>
-          )}
-          
-          {name === 'AI Code Document Generator' && (
-            <>
-              <rect x="150" y="110" width="100" height="80" fill={hexColor} opacity="0.8" />
-              <line x1="165" y1="130" x2="235" y2="130" stroke="white" strokeWidth="2" />
-              <line x1="165" y1="150" x2="235" y2="150" stroke="white" strokeWidth="2" />
-              <line x1="165" y1="170" x2="235" y2="170" stroke="white" strokeWidth="2" />
-              <rect x="130" y="100" width="20" height="90" fill={hexColor} opacity="0.6" />
-              <rect x="110" y="100" width="20" height="90" fill={hexColor} opacity="0.4" />
-            </>
-          )}
-          
-          {name === 'AI NLP-to-Code Converter' && (
-            <>
-              <path d="M150,120 L250,120 L230,180 L170,180 Z" fill={hexColor} opacity="0.7" />
-              <text x="180" y="140" fill="white" fontSize="20">ABC</text>
-              <text x="190" y="170" fill="white" fontSize="15">{ }</text>
-              <line x1="150" y1="120" x2="230" y2="180" stroke="white" strokeWidth="1" opacity="0.5" />
-              <line x1="250" y1="120" x2="170" y2="180" stroke="white" strokeWidth="1" opacity="0.5" />
-            </>
-          )}
-          
-          {/* Animated elements */}
-          <circle cx="200" cy="100" r="5" fill="white" opacity="0.8">
-            <animate attributeName="cy" values="100;110;100" dur="2s" repeatCount="indefinite" />
-          </circle>
-          
-          {/* Orbiting particle effect */}
-          <circle cx="200" cy="150" r="3" fill="white">
-            <animateTransform 
-              attributeName="transform" 
-              type="rotate" 
-              from="0 200 150" 
-              to="360 200 150" 
-              dur="4s" 
-              repeatCount="indefinite" 
+      <div className="w-full h-full">
+        <Canvas className="w-full h-full" shadows>
+          <Suspense fallback={null}>
+            <ambientLight intensity={0.7} />
+            <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={0.8} />
+            <pointLight position={[-10, -10, -10]} intensity={0.5} />
+            <Model 
+              path={modelPath}
             />
-          </circle>
-          
-          <circle cx="200" cy="150" r="2" fill="white">
-            <animateTransform 
-              attributeName="transform" 
-              type="rotate" 
-              from="180 200 150" 
-              to="540 200 150" 
-              dur="3s" 
-              repeatCount="indefinite" 
-            />
-          </circle>
-        </svg>
+            <CameraController modelType={modelType} />
+          </Suspense>
+        </Canvas>
       </div>
     );
   };
@@ -294,11 +282,6 @@ const NexusHiveAbout = () => {
               aria-label={`View ${tool.name}`}
             />
           ))}
-          <button 
-            onClick={() => scrollToSection('cta')}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${getActiveDotClass('cta')}`}
-            aria-label="Go to call to action"
-          />
         </div>
       </div>
 
@@ -350,15 +333,16 @@ const NexusHiveAbout = () => {
                 </a>
               </div>
             </div>
-            <div className={`w-full md:w-1/2 ${index % 2 === 0 ? 'order-2 md:order-2' : 'order-2 md:order-1'}`}>
-              <div className={`transform transition-all duration-1000 delay-300 ${visibleSections[tool.id] ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
-                <Tool3DPlaceholder color={tool.color} name={tool.name} />
+            <div className={`w-full md:w-1/2 h-96 md:h-screen ${index % 2 === 0 ? 'order-2 md:order-2' : 'order-2 md:order-1'}`}>
+              <div className={`transform transition-all duration-1000 delay-300 h-full ${visibleSections[tool.id] ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
+                <Model3DViewer 
+                  modelPath={tool.modelPath} 
+                  modelType={tool.modelType}
+                />
               </div>
             </div>
           </section>
         ))}
-
-        
       </div>
 
       <style jsx>{`

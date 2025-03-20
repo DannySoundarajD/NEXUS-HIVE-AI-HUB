@@ -53,7 +53,7 @@ const Signup = () => {
           provider: 'email'
         });
         
-        router.push('/dashboard'); // Redirect to dashboard after signup
+        router.push('/'); // Redirect to dashboard after signup
       }
     } catch (err: any) {
       setError(err.message || 'Failed to create account');

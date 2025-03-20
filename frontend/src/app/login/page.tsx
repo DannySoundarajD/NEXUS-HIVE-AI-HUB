@@ -22,7 +22,7 @@ const Login = () => {
     try {
       // Sign in with email and password
       await signInWithEmailAndPassword(auth, email, password);
-      router.push('/dashboard'); // Redirect to dashboard after login
+      router.push('/'); // Redirect to dashboard after login
     } catch (err: any) {
       setError(err.message || 'Failed to sign in');
     } finally {
@@ -55,7 +55,7 @@ const Login = () => {
         });
       }
       
-      router.push('/dashboard'); // Redirect to dashboard after login
+      router.push('/'); // Redirect to dashboard after login
     } catch (err: any) {
       setError(err.message || 'Failed to sign in with Google');
     } finally {
