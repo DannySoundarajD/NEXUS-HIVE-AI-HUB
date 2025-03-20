@@ -3,7 +3,6 @@ import React from 'react';
 import ClientSideLayout from '../../components/ClientSideLayout';
 import { Inter } from 'next/font/google';
 import './globals.css'; // Make sure this is imported
-import Head from 'next/head';
 
 const inter = Inter({ subsets: ['latin'] });
 
