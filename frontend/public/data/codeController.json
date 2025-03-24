@@ -1,0 +1,2102 @@
+[
+    {
+        "id": 1,
+        "title": "Problem 1",
+        "difficulty": "Beginner",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 1.",
+        "starterCode": "function problem1(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "title": "Problem 2",
+        "difficulty": "Beginner",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 2.",
+        "starterCode": "function problem2(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "title": "Problem 3",
+        "difficulty": "Beginner",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 3.",
+        "starterCode": "function problem3(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "title": "Problem 4",
+        "difficulty": "Beginner",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 4.",
+        "starterCode": "function problem4(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "title": "Problem 5",
+        "difficulty": "Beginner",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 5.",
+        "starterCode": "function problem5(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "title": "Problem 6",
+        "difficulty": "Beginner",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 6.",
+        "starterCode": "function problem6(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "title": "Problem 7",
+        "difficulty": "Beginner",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 7.",
+        "starterCode": "function problem7(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "title": "Problem 8",
+        "difficulty": "Beginner",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 8.",
+        "starterCode": "function problem8(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 9,
+        "title": "Problem 9",
+        "difficulty": "Beginner",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 9.",
+        "starterCode": "function problem9(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 10,
+        "title": "Problem 10",
+        "difficulty": "Medium",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 10.",
+        "starterCode": "function problem10(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 11,
+        "title": "Problem 11",
+        "difficulty": "Medium",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 11.",
+        "starterCode": "function problem11(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 12,
+        "title": "Problem 12",
+        "difficulty": "Medium",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 12.",
+        "starterCode": "function problem12(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 13,
+        "title": "Problem 13",
+        "difficulty": "Medium",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 13.",
+        "starterCode": "function problem13(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 14,
+        "title": "Problem 14",
+        "difficulty": "Medium",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 14.",
+        "starterCode": "function problem14(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 15,
+        "title": "Problem 15",
+        "difficulty": "Medium",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 15.",
+        "starterCode": "function problem15(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 16,
+        "title": "Problem 16",
+        "difficulty": "Medium",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 16.",
+        "starterCode": "function problem16(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 17,
+        "title": "Problem 17",
+        "difficulty": "Medium",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 17.",
+        "starterCode": "function problem17(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 18,
+        "title": "Problem 18",
+        "difficulty": "Medium",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 18.",
+        "starterCode": "function problem18(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 19,
+        "title": "Problem 19",
+        "difficulty": "Medium",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 19.",
+        "starterCode": "function problem19(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 20,
+        "title": "Problem 20",
+        "difficulty": "Intermediate",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 20.",
+        "starterCode": "function problem20(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 21,
+        "title": "Problem 21",
+        "difficulty": "Intermediate",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 21.",
+        "starterCode": "function problem21(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 22,
+        "title": "Problem 22",
+        "difficulty": "Intermediate",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 22.",
+        "starterCode": "function problem22(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 23,
+        "title": "Problem 23",
+        "difficulty": "Intermediate",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 23.",
+        "starterCode": "function problem23(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 24,
+        "title": "Problem 24",
+        "difficulty": "Intermediate",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 24.",
+        "starterCode": "function problem24(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 25,
+        "title": "Problem 25",
+        "difficulty": "Intermediate",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 25.",
+        "starterCode": "function problem25(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 26,
+        "title": "Problem 26",
+        "difficulty": "Intermediate",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 26.",
+        "starterCode": "function problem26(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 27,
+        "title": "Problem 27",
+        "difficulty": "Intermediate",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 27.",
+        "starterCode": "function problem27(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 28,
+        "title": "Problem 28",
+        "difficulty": "Intermediate",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 28.",
+        "starterCode": "function problem28(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 29,
+        "title": "Problem 29",
+        "difficulty": "Intermediate",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 29.",
+        "starterCode": "function problem29(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 30,
+        "title": "Problem 30",
+        "difficulty": "Advanced",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 30.",
+        "starterCode": "function problem30(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 31,
+        "title": "Problem 31",
+        "difficulty": "Advanced",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 31.",
+        "starterCode": "function problem31(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 32,
+        "title": "Problem 32",
+        "difficulty": "Advanced",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 32.",
+        "starterCode": "function problem32(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 33,
+        "title": "Problem 33",
+        "difficulty": "Advanced",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 33.",
+        "starterCode": "function problem33(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 34,
+        "title": "Problem 34",
+        "difficulty": "Advanced",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 34.",
+        "starterCode": "function problem34(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 35,
+        "title": "Problem 35",
+        "difficulty": "Advanced",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 35.",
+        "starterCode": "function problem35(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 36,
+        "title": "Problem 36",
+        "difficulty": "Advanced",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 36.",
+        "starterCode": "function problem36(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 37,
+        "title": "Problem 37",
+        "difficulty": "Advanced",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 37.",
+        "starterCode": "function problem37(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 38,
+        "title": "Problem 38",
+        "difficulty": "Advanced",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 38.",
+        "starterCode": "function problem38(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 39,
+        "title": "Problem 39",
+        "difficulty": "Advanced",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 39.",
+        "starterCode": "function problem39(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 40,
+        "title": "Problem 40",
+        "difficulty": "Advanced",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 40.",
+        "starterCode": "function problem40(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 41,
+        "title": "Problem 41",
+        "difficulty": "Advanced",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 41.",
+        "starterCode": "function problem41(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 42,
+        "title": "Problem 42",
+        "difficulty": "Advanced",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 42.",
+        "starterCode": "function problem42(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 43,
+        "title": "Problem 43",
+        "difficulty": "Advanced",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 43.",
+        "starterCode": "function problem43(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 44,
+        "title": "Problem 44",
+        "difficulty": "Advanced",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 44.",
+        "starterCode": "function problem44(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 45,
+        "title": "Problem 45",
+        "difficulty": "Advanced",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 45.",
+        "starterCode": "function problem45(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 46,
+        "title": "Problem 46",
+        "difficulty": "Advanced",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 46.",
+        "starterCode": "function problem46(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 47,
+        "title": "Problem 47",
+        "difficulty": "Advanced",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 47.",
+        "starterCode": "function problem47(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 48,
+        "title": "Problem 48",
+        "difficulty": "Advanced",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 48.",
+        "starterCode": "function problem48(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 49,
+        "title": "Problem 49",
+        "difficulty": "Advanced",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 49.",
+        "starterCode": "function problem49(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 50,
+        "title": "Problem 50",
+        "difficulty": "Advanced",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 50.",
+        "starterCode": "function problem50(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 51,
+        "title": "Problem 51",
+        "difficulty": "Advanced",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 51.",
+        "starterCode": "function problem51(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 52,
+        "title": "Problem 52",
+        "difficulty": "Advanced",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 52.",
+        "starterCode": "function problem52(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 53,
+        "title": "Problem 53",
+        "difficulty": "Advanced",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 53.",
+        "starterCode": "function problem53(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 54,
+        "title": "Problem 54",
+        "difficulty": "Advanced",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 54.",
+        "starterCode": "function problem54(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 55,
+        "title": "Problem 55",
+        "difficulty": "Advanced",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 55.",
+        "starterCode": "function problem55(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 56,
+        "title": "Problem 56",
+        "difficulty": "Advanced",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 56.",
+        "starterCode": "function problem56(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 57,
+        "title": "Problem 57",
+        "difficulty": "Advanced",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 57.",
+        "starterCode": "function problem57(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 58,
+        "title": "Problem 58",
+        "difficulty": "Advanced",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 58.",
+        "starterCode": "function problem58(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 59,
+        "title": "Problem 59",
+        "difficulty": "Advanced",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 59.",
+        "starterCode": "function problem59(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 60,
+        "title": "Problem 60",
+        "difficulty": "Advanced",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 60.",
+        "starterCode": "function problem60(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 61,
+        "title": "Problem 61",
+        "difficulty": "Advanced",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 61.",
+        "starterCode": "function problem61(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 62,
+        "title": "Problem 62",
+        "difficulty": "Advanced",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 62.",
+        "starterCode": "function problem62(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 63,
+        "title": "Problem 63",
+        "difficulty": "Advanced",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 63.",
+        "starterCode": "function problem63(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 64,
+        "title": "Problem 64",
+        "difficulty": "Advanced",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 64.",
+        "starterCode": "function problem64(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 65,
+        "title": "Problem 65",
+        "difficulty": "Advanced",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 65.",
+        "starterCode": "function problem65(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 66,
+        "title": "Problem 66",
+        "difficulty": "Advanced",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 66.",
+        "starterCode": "function problem66(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 67,
+        "title": "Problem 67",
+        "difficulty": "Advanced",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 67.",
+        "starterCode": "function problem67(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 68,
+        "title": "Problem 68",
+        "difficulty": "Advanced",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 68.",
+        "starterCode": "function problem68(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 69,
+        "title": "Problem 69",
+        "difficulty": "Advanced",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 69.",
+        "starterCode": "function problem69(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 70,
+        "title": "Problem 70",
+        "difficulty": "Advanced",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 70.",
+        "starterCode": "function problem70(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 71,
+        "title": "Problem 71",
+        "difficulty": "Advanced",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 71.",
+        "starterCode": "function problem71(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 72,
+        "title": "Problem 72",
+        "difficulty": "Advanced",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 72.",
+        "starterCode": "function problem72(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 73,
+        "title": "Problem 73",
+        "difficulty": "Advanced",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 73.",
+        "starterCode": "function problem73(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 74,
+        "title": "Problem 74",
+        "difficulty": "Advanced",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 74.",
+        "starterCode": "function problem74(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 75,
+        "title": "Problem 75",
+        "difficulty": "Advanced",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 75.",
+        "starterCode": "function problem75(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 76,
+        "title": "Problem 76",
+        "difficulty": "Advanced",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 76.",
+        "starterCode": "function problem76(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 77,
+        "title": "Problem 77",
+        "difficulty": "Advanced",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 77.",
+        "starterCode": "function problem77(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 78,
+        "title": "Problem 78",
+        "difficulty": "Advanced",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 78.",
+        "starterCode": "function problem78(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 79,
+        "title": "Problem 79",
+        "difficulty": "Advanced",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 79.",
+        "starterCode": "function problem79(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 80,
+        "title": "Problem 80",
+        "difficulty": "Advanced",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 80.",
+        "starterCode": "function problem80(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 81,
+        "title": "Problem 81",
+        "difficulty": "Advanced",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 81.",
+        "starterCode": "function problem81(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 82,
+        "title": "Problem 82",
+        "difficulty": "Advanced",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 82.",
+        "starterCode": "function problem82(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 83,
+        "title": "Problem 83",
+        "difficulty": "Advanced",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 83.",
+        "starterCode": "function problem83(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 84,
+        "title": "Problem 84",
+        "difficulty": "Advanced",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 84.",
+        "starterCode": "function problem84(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 85,
+        "title": "Problem 85",
+        "difficulty": "Advanced",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 85.",
+        "starterCode": "function problem85(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 86,
+        "title": "Problem 86",
+        "difficulty": "Advanced",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 86.",
+        "starterCode": "function problem86(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 87,
+        "title": "Problem 87",
+        "difficulty": "Advanced",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 87.",
+        "starterCode": "function problem87(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 88,
+        "title": "Problem 88",
+        "difficulty": "Advanced",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 88.",
+        "starterCode": "function problem88(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 89,
+        "title": "Problem 89",
+        "difficulty": "Advanced",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 89.",
+        "starterCode": "function problem89(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 90,
+        "title": "Problem 90",
+        "difficulty": "Advanced",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 90.",
+        "starterCode": "function problem90(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 91,
+        "title": "Problem 91",
+        "difficulty": "Advanced",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 91.",
+        "starterCode": "function problem91(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 92,
+        "title": "Problem 92",
+        "difficulty": "Advanced",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 92.",
+        "starterCode": "function problem92(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 93,
+        "title": "Problem 93",
+        "difficulty": "Advanced",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 93.",
+        "starterCode": "function problem93(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 94,
+        "title": "Problem 94",
+        "difficulty": "Advanced",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 94.",
+        "starterCode": "function problem94(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 95,
+        "title": "Problem 95",
+        "difficulty": "Advanced",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 95.",
+        "starterCode": "function problem95(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 96,
+        "title": "Problem 96",
+        "difficulty": "Advanced",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 96.",
+        "starterCode": "function problem96(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 97,
+        "title": "Problem 97",
+        "difficulty": "Advanced",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 97.",
+        "starterCode": "function problem97(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 98,
+        "title": "Problem 98",
+        "difficulty": "Advanced",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 98.",
+        "starterCode": "function problem98(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 99,
+        "title": "Problem 99",
+        "difficulty": "Advanced",
+        "tags": [
+            "Math",
+            "Logic"
+        ],
+        "description": "Description for problem 99.",
+        "starterCode": "function problem99(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    },
+    {
+        "id": 100,
+        "title": "Problem 100",
+        "difficulty": "Advanced",
+        "tags": [
+            "Algorithms",
+            "Data Structures"
+        ],
+        "description": "Description for problem 100.",
+        "starterCode": "function problem100(input) {\n  // Your code here\n}",
+        "testCases": [
+            {
+                "input": "[1,2,3,4], 5",
+                "expected": "[0,3]"
+            },
+            {
+                "input": "[10,20,30], 50",
+                "expected": "[1,2]"
+            }
+        ]
+    }
+]

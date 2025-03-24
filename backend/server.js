@@ -16,10 +16,9 @@ dotenv.config();
 const chatRoutes = require('./routes/chat');
 const documentRoutes = require('./routes/document');
 const codeRoutes = require('./routes/code');
-const webpageRoutes = require('./routes/webpage');
-const voiceRoutes = require('./routes/voice'); 
 const docGenRoutes = require('./routes/docGen');
-const nlpToCodeRoutes = require('./routes/nlpToCode'); // Added new route for NLP to code generation
+const nlpToCodeRoutes = require('./routes/nlpToCode');
+const codeChallengeroutes = require('./routes/codeChallenge'); // Added new route for code challenges
 
 // Initialize Express app
 const app = express();
@@ -81,11 +80,21 @@ app.get('/api/health', async (req, res) => {
 // ✅ API Routes
 app.use('/api/chat', chatRoutes);
 app.use('/api/document', documentRoutes);
-app.use('/api/code', codeRoutes);
-app.use('/api/webpage', webpageRoutes);
-app.use('/api/voice', voiceRoutes);
+app.use('/api/code/', codeRoutes);
 app.use('/api/docgen', docGenRoutes);
-app.use('/api/nlptocode', nlpToCodeRoutes); // Add the new route for NLP to code generation
+app.use('/api/nlptocode', nlpToCodeRoutes);
+app.use('/api/codechallenge', codeChallengeroutes);  // Added route for code challenges
+
+// ✅ Serve static files from the frontend build directory for production
+if (process.env.NODE_ENV === 'production') {
+  const frontendPath = path.join(__dirname, '../frontend/dist');
+  app.use(express.static(frontendPath));
+  
+  // For any routes not matching the API routes, serve the frontend
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(frontendPath, 'index.html'));
+  });
+}
 
 // ✅ WebSocket setup
 require('./websocket/socket')(io);
@@ -116,6 +125,7 @@ server.listen(PORT, () => {
   console.log(`📝 Document processing powered by Gemma model`);
   console.log(`📚 Code documentation powered by CodeGemma model`);
   console.log(`💬 NLP to Code conversion powered by CodeGemma model`);
+  console.log(`🧩 Code Challenges powered by CodeGemma model`);
   console.log(`🔗 Ollama API: ${process.env.OLLAMA_API_URL || 'http://localhost:11434/api'}`);
 });
 

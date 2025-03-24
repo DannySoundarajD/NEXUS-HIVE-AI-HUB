@@ -1,3 +1,4 @@
+// app/page.js
 "use client";
 
 import React, { useEffect, useRef, useState, Suspense } from 'react';
@@ -5,7 +6,8 @@ import { useRouter, usePathname } from 'next/navigation';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase/config';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { OrbitControls, useGLTF, PerspectiveCamera } from '@react-three/drei';
+import { OrbitControls, useGLTF, PerspectiveCamera, Environment } from '@react-three/drei';
+import Spline from '@splinetool/react-spline/next';
 import { 
   Code2, 
   Code, 
@@ -22,6 +24,31 @@ import {
 const Model = ({ path, position = [0, 0, 0] }) => {
   const { scene } = useGLTF(`/models/${path}`);
   const groupRef = useRef();
+  const [modelLoaded, setModelLoaded] = useState(false);
+  
+  // Determine if this is the ultron model
+  const isUltronModel = path === 'ultron (2).glb';
+
+  useEffect(() => {
+    if (scene) {
+      // Apply the appropriate scaling based on the model type
+      if (isUltronModel) {
+        // Increase height of ultron model by scaling it up
+        scene.scale.set(2, 2, 2);
+        // Adjust position to ensure it's properly centered after scaling
+        scene.position.set(0, -1.5, 0);
+      } else if (path === 'desktop.glb') {
+        scene.scale.set(1.2, 1.2, 1.2);
+      } else if (path === 'document.glb') {
+        scene.scale.set(1.0, 1.0, 1.0);
+      } else if (path === 'gpu.glb') {
+        scene.scale.set(1.1, 1.1, 1.1);
+      }
+      
+      // Mark model as loaded to trigger fade-in animation
+      setModelLoaded(true);
+    }
+  }, [scene, isUltronModel, path]);
   
   // Auto-rotate model at a gentle pace
   useFrame(() => {
@@ -34,43 +61,188 @@ const Model = ({ path, position = [0, 0, 0] }) => {
     <group 
       ref={groupRef} 
       position={position}
+      // Apply fade-in animation when model is loaded
+      opacity={modelLoaded ? 1 : 0}
+      style={{
+        transition: 'opacity 0.5s ease-in-out'
+      }}
     >
+      {/* Enhanced lighting specifically for ultron model */}
+      {isUltronModel && (
+        <>
+          {/* Increased intensity of key light */}
+          <spotLight 
+            position={[5, 0, 5]} 
+            angle={0.6} 
+            penumbra={0.8} 
+            intensity={3.5} 
+            color="#6495ED" 
+            castShadow 
+          />
+          {/* Increased intensity of fill light */}
+          <pointLight 
+            position={[-3, 2, -1]} 
+            intensity={2} 
+            color="#60a5fa" 
+          />
+          {/* Added rim light for better edge definition */}
+          <pointLight 
+            position={[0, -2, 2]} 
+            intensity={1.5} 
+            color="#a78bfa" 
+          />
+          {/* Added additional front light to illuminate the face */}
+          <spotLight 
+            position={[0, 3, 5]} 
+            angle={0.5} 
+            penumbra={0.5} 
+            intensity={2.8} 
+            color="#ffffff" 
+          />
+          {/* Additional ambient light just for the ultron model */}
+          <ambientLight intensity={0.8} color="#e0e7ff" />
+        </>
+      )}
       <primitive object={scene} />
     </group>
   );
 };
 
-// Improved camera controller with balanced initial position
+// Improved camera controller with consistent positioning
 const CameraController = ({ modelType }) => {
   const { camera, gl } = useThree();
   const controls = useRef();
+  const cameraPositionRef = useRef();
+  
+  // Store the appropriate camera positions for each model type
+  const cameraPositions = {
+    'robot': [0, 1.0, 5.5],    // Adjusted for taller ultron model
+    'desktop': [0, 5, 15],
+    'document': [3, 3, 3],
+    'gpu': [0, 6, 0],
+    'default': [0, 0, 4]
+  };
   
   useEffect(() => {
     if (controls.current) {
-      // Set appropriate camera position based on model type
-      switch(modelType) {
-        case 'robot':
-          camera.position.set(0, 3, 3);
-          break;
-        case 'desktop':
-          camera.position.set(0, 5, 15);
-          break;
-        case 'document':
-          camera.position.set(3, 3, 3);
-          break;
-        case 'gpu':
-          camera.position.set(0, 6, 0);
-          break;
-        default:
-          camera.position.set(0, 0, 4);
+      // Get camera position based on model type
+      const position = cameraPositions[modelType] || cameraPositions.default;
+      
+      // Store initial camera position for smooth transitions
+      if (!cameraPositionRef.current) {
+        cameraPositionRef.current = [...position];
+        camera.position.set(...position);
+      } else {
+        // For subsequent updates, animate the camera transition
+        const startPos = [camera.position.x, camera.position.y, camera.position.z];
+        const endPos = position;
+        
+        // Simple animation function
+        const animateCamera = (startTime) => {
+          const elapsedTime = Date.now() - startTime;
+          const duration = 1000; // 1 second transition
+          
+          if (elapsedTime < duration) {
+            const t = elapsedTime / duration;
+            const easeT = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; // ease in-out quad
+            
+            // Interpolate position
+            camera.position.set(
+              startPos[0] + (endPos[0] - startPos[0]) * easeT,
+              startPos[1] + (endPos[1] - startPos[1]) * easeT,
+              startPos[2] + (endPos[2] - startPos[2]) * easeT
+            );
+            
+            requestAnimationFrame(() => animateCamera(startTime));
+          } else {
+            // Ensure final position is exactly what we want
+            camera.position.set(...endPos);
+          }
+          controls.current.update();
+        };
+        
+        animateCamera(Date.now());
       }
-      controls.current.update();
     }
   }, [camera, modelType]);
 
   return <OrbitControls ref={controls} enablePan={true} enableZoom={true} />;
 };
 
+// Improved 3D model viewer with preloading and smooth transitions
+const Model3DViewer = ({ modelPath, modelType }) => {
+  const isUltronModel = modelPath === 'ultron (2).glb';
+  const [isModelLoading, setIsModelLoading] = useState(true);
+  
+  // Preload models to ensure they're ready before display
+  useEffect(() => {
+    // Preload the model
+    const preloadModel = async () => {
+      try {
+        await useGLTF.preload(`/models/${modelPath}`);
+        setIsModelLoading(false);
+      } catch (error) {
+        console.error(`Error preloading model ${modelPath}:`, error);
+        setIsModelLoading(false);
+      }
+    };
+    
+    preloadModel();
+    
+    // Cleanup preloaded models when component unmounts
+    return () => {
+      // Using clear instead of dispose for model cleanup
+      if (typeof useGLTF.clear === 'function') {
+        useGLTF.clear(`/models/${modelPath}`);
+      } else {
+        // Fallback if clear is not available
+        console.log(`Unmounting model: ${modelPath}`);
+      }
+    };
+  }, [modelPath]);
+  
+  return (
+    <div className="w-full h-full relative">
+      {isModelLoading && (
+        <div className="absolute inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-10">
+          <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+        </div>
+      )}
+      
+      <Canvas 
+        className={`w-full h-full transition-opacity duration-500 ${isModelLoading ? 'opacity-0' : 'opacity-100'}`} 
+        shadows
+      >
+        <Suspense fallback={null}>
+          {/* Base lighting for all models */}
+          <ambientLight intensity={isUltronModel ? 0.7 : 0.7} />
+          
+          {/* Base spotlight for all models - adjusted intensity */}
+          <spotLight 
+            position={[10, 10, 10]} 
+            angle={0.15} 
+            penumbra={1} 
+            intensity={isUltronModel ? 1.8 : 0.8} 
+          />
+          
+          {/* Base pointlight for all models */}
+          <pointLight position={[-10, -10, -10]} intensity={0.5} />
+          
+          {/* Add very light fog for ultron model - reduced density */}
+          {isUltronModel && <fog attach="fog" color="#101035" near={20} far={50} />}
+          
+          {/* Add subtle environment lighting */}
+          {isUltronModel && <Environment preset="city" />}
+          
+          <Model path={modelPath} />
+          <CameraController modelType={modelType} />
+        </Suspense>
+      </Canvas>
+    </div>
+  );
+};
+
+// Main NexusHiveAbout component
 const NexusHiveAbout = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [activeSection, setActiveSection] = useState('hero');
@@ -79,6 +251,7 @@ const NexusHiveAbout = () => {
   const scrollRef = useRef(null);
   const router = useRouter();
   const pathname = usePathname();
+  const [buttonState, setButtonState] = useState({}); // Track button click animations
 
   // Handle authentication - Modified to ensure content loads even if auth fails
   useEffect(() => {
@@ -113,6 +286,14 @@ const NexusHiveAbout = () => {
     }
   }, [router, pathname]);
 
+  // Set button animation
+  const animateButton = (id) => {
+    setButtonState(prev => ({...prev, [id]: true}));
+    setTimeout(() => {
+      setButtonState(prev => ({...prev, [id]: false}));
+    }, 700);
+  };
+
   // AI tools available in Nexus Hive with balanced model settings
   const aiTools = [
     {
@@ -121,7 +302,7 @@ const NexusHiveAbout = () => {
       description: 'Our Mixtral-8x7B-powered conversational agent provides real-time assistance with coding queries, software best practices, and general AI-powered research. It understands context, provides intelligent responses, and can generate code snippets, explanations, and debugging solutions instantly.',
       icon: <MessageSquare className="h-12 w-12 text-blue-500" />,
       path: '/chat',
-      modelPath: 'ultron (2).glb',  // Updated path here
+      modelPath: 'ultron (2).glb',
       modelType: 'robot',
       color: 'blue',
       bgClass: 'bg-gradient-to-r from-blue-600 to-indigo-600',
@@ -228,25 +409,6 @@ const NexusHiveAbout = () => {
     }
   };
 
-  // Improved 3D model viewer with full-screen capability
-  const Model3DViewer = ({ modelPath, modelType }) => {
-    return (
-      <div className="w-full h-full">
-        <Canvas className="w-full h-full" shadows>
-          <Suspense fallback={null}>
-            <ambientLight intensity={0.7} />
-            <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={0.8} />
-            <pointLight position={[-10, -10, -10]} intensity={0.5} />
-            <Model 
-              path={modelPath}
-            />
-            <CameraController modelType={modelType} />
-          </Suspense>
-        </Canvas>
-      </div>
-    );
-  };
-
   if (isLoading) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-indigo-900 via-purple-900 to-gray-900">
@@ -270,15 +432,21 @@ const NexusHiveAbout = () => {
       <div className="fixed right-6 top-1/2 transform -translate-y-1/2 z-50 hidden md:block">
         <div className="flex flex-col space-y-4">
           <button 
-            onClick={() => scrollToSection('hero')}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${getActiveDotClass('hero')}`}
+            onClick={() => {
+              scrollToSection('hero');
+              animateButton('dot-hero');
+            }}
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${getActiveDotClass('hero')} ${buttonState['dot-hero'] ? 'animate-ping-once' : ''}`}
             aria-label="Go to top"
           />
           {aiTools.map(tool => (
             <button
               key={tool.id}
-              onClick={() => scrollToSection(tool.id)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${getActiveDotClass(tool.id)}`}
+              onClick={() => {
+                scrollToSection(tool.id);
+                animateButton(`dot-${tool.id}`);
+              }}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${getActiveDotClass(tool.id)} ${buttonState[`dot-${tool.id}`] ? 'animate-ping-once' : ''}`}
               aria-label={`View ${tool.name}`}
             />
           ))}
@@ -301,6 +469,24 @@ const NexusHiveAbout = () => {
             <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-12">
               NexusHive AI is an innovative AI-powered development platform designed to streamline coding workflows and enhance software development efficiency. It integrates four powerful AI-driven tools, each tailored to assist developers in different aspects of coding, debugging, documentation, and AI-powered code generation. By supporting 10+ programming languages, NexusHive AI ensures that developers can seamlessly work across multiple technologies with smart assistance.
             </p>
+            <div className="flex justify-center gap-4 mb-8">
+              <a 
+                href="/codechallenge" 
+                className="relative px-6 py-3 rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium transition-all duration-300 group overflow-hidden"
+                onClick={() => animateButton('code-challenge')}
+              >
+                <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-purple-700 to-indigo-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                <span className="absolute -inset-full h-full w-full block transform -skew-x-12 bg-gradient-to-r from-transparent via-white to-transparent opacity-40 group-hover:animate-shine"></span>
+                <span className="absolute inset-0 w-full h-full flex items-center justify-center">
+                  <span className="absolute inset-0 bg-gradient-to-br from-violet-500 to-indigo-600 opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-105 rounded-lg"></span>
+                </span>
+                <span className="relative flex items-center justify-center">
+                  <Zap className={`mr-2 h-5 w-5 transition-transform duration-300 group-hover:scale-110 ${buttonState['code-challenge'] ? 'animate-ping-quick' : ''}`} />
+                  <span className="relative z-10 transition-transform duration-300 group-hover:scale-105">Code Challenges</span>
+                </span>
+                <span className="absolute inset-0 rounded-lg shadow-glow opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+              </a>
+            </div>
             <div className="animate-bounce mt-16 cursor-pointer" onClick={() => scrollToSection(aiTools[0].id)}>
               <ChevronDown className="h-10 w-10 text-indigo-400 mx-auto" />
               <p className="text-sm text-gray-400 mt-2">Scroll to explore our tools</p>
@@ -326,10 +512,32 @@ const NexusHiveAbout = () => {
                 </p>
                 <a 
                   href={tool.path} 
-                  className={`inline-flex items-center px-6 py-3 rounded-lg ${tool.bgClass} ${tool.hoverBgClass} text-white font-medium transition-colors duration-200`}
+                  className={`relative inline-flex items-center px-6 py-3 rounded-lg overflow-hidden group`}
+                  onClick={() => animateButton(`explore-${tool.id}`)}
                 >
-                  Explore {tool.name}
-                  <ExternalLink className="ml-2 h-5 w-5" />
+                  {/* Background layers */}
+                  <span className={`absolute inset-0 ${tool.bgClass} transition-all duration-300 transform group-hover:scale-105`}></span>
+                  <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-30 animate-pulse-slow"></span>
+                    <span className="absolute -inset-full h-full w-full block transform -skew-x-12 bg-gradient-to-r from-transparent via-white to-transparent opacity-20 group-hover:animate-shine-slow"></span>
+                  </span>
+                  
+                  {/* Border glow effect */}
+                  <span className="absolute inset-0 rounded-lg border border-transparent group-hover:border-white group-hover:opacity-30 transition-all duration-300"></span>
+                  
+                  {/* Particles effect on hover */}
+                  <span className="absolute inset-0 opacity-0 group-hover:opacity-100">
+                    <span className="particle absolute w-1 h-1 rounded-full bg-white top-0 left-5"></span>
+                    <span className="particle absolute w-1 h-1 rounded-full bg-white top-3 right-10 delay-150"></span>
+                    <span className="particle absolute w-1 h-1 rounded-full bg-white bottom-5 left-10 delay-300"></span>
+                    <span className="particle absolute w-1 h-1 rounded-full bg-white bottom-2 right-5 delay-500"></span>
+                  </span>
+                  
+                  {/* Content */}
+                  <span className="relative flex items-center justify-center text-white font-medium z-10">
+                    <span>Explore {tool.name}</span>
+                    <ExternalLink className={`ml-2 h-5 w-5 transition-all duration-300 group-hover:translate-x-1 ${buttonState[`explore-${tool.id}`] ? 'animate-bounce-once' : ''}`} />
+                  </span>
                 </a>
               </div>
             </div>
@@ -374,9 +582,116 @@ const NexusHiveAbout = () => {
         .snap-always {
           scroll-snap-stop: always;
         }
+        
+        /* New button animations */
+        @keyframes shine {
+          0% { transform: translateX(-100%) skewX(-12deg); }
+          100% { transform: translateX(150%) skewX(-12deg); }
+        }
+        
+        @keyframes shine-slow {
+          0% { transform: translateX(-100%) skewX(-12deg); }
+          100% { transform: translateX(150%) skewX(-12deg); }
+        }
+        
+        .animate-shine {
+          animation: shine 1s infinite;
+        }
+        
+        .animate-shine-slow {
+          animation: shine-slow 3s infinite;
+        }
+        
+        .animate-pulse-slow {
+          animation: pulse 3s infinite;
+        }
+        
+        @keyframes pulse {
+          0%, 100% { opacity: 0.3; }
+          50% { opacity: 0.6; }
+        }
+        
+        /* Glow effects */
+        .shadow-glow {
+          box-shadow: 0 0 15px 2px rgba(129, 140, 248, 0.7),
+                    0 0 30px 5px rgba(129, 140, 248, 0.5),
+                    0 0 45px 7px rgba(129, 140, 248, 0.3);
+        }
+        
+        /* Particle animations */
+        @keyframes float-up {
+          0% { transform: translateY(0) scale(1); opacity: 1; }
+          100% { transform: translateY(-20px) scale(0); opacity: 0; }
+        }
+        
+        .particle {
+          animation: float-up 2s infinite;
+          animation-play-state: paused;
+        }
+        
+        .group:hover .particle {
+          animation-play-state: running;
+        }
+        
+        .delay-150 {
+          animation-delay: 0.15s;
+        }
+        
+        .delay-300 {
+          animation-delay: 0.3s;
+        }
+        
+        .delay-500 {
+          animation-delay: 0.5s;
+        }
+        
+        /* Button click animations */
+        @keyframes ping-once {
+          0% { transform: scale(1); opacity: 1; }
+          50% { transform: scale(2); opacity: 0.5; }
+          100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .animate-ping-once {
+          animation: ping-once 0.7s ease-out;
+        }
+        
+        @keyframes ping-quick {
+          0% { transform: scale(1); }
+          50% { transform: scale(1.5); }
+          100% { transform: scale(1); }
+        }
+        
+        .animate-ping-quick {
+          animation: ping-quick 0.4s ease-out;
+        }
+        
+        @keyframes bounce-once {
+          0% { transform: translateX(0); }
+          25% { transform: translateX(5px); }
+          50% { transform: translateX(0); }
+          75% { transform: translateX(2px); }
+          100% { transform: translateX(0); }
+        }
+        
+        .animate-bounce-once {
+          animation: bounce-once 0.7s ease-out;
+        }
       `}</style>
     </div>
   );
 };
 
+// Function for Spline home page (can be used as an alternative home)
+function Home() {
+  return (
+    <main>
+      <Spline
+        scene="https://prod.spline.design/s1t2YvrMKhyF3rLM/scene.splinecode" 
+      />
+    </main>
+  );
+}
+
+// Export NexusHiveAbout as the default component for the home page
 export default NexusHiveAbout;

@@ -351,60 +351,66 @@ export default function AIChatAssistant() {
       <ToastContainer position="top-right" theme="dark" />
       
       {/* Fixed top navigation bar */}
-      <div className="bg-gray-900 bg-opacity-90 backdrop-blur-md border-b border-indigo-900 shadow-lg pt-15.5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
-          <div className="flex items-center space-x-4">
-            <div className="h-9 w-9 rounded-full bg-gradient-to-r from-cyan-400 to-indigo-400 flex items-center justify-center shadow-lg">
-              <FaRobot className="text-gray-900" />
-            </div>
-            <span className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400">
-              NEXUS HIVE
-            </span>
-          </div>
-          
-          <div className="flex items-center space-x-4">
-            
-            
-            <div className="relative">
-              <button 
-                onClick={() => setIsModelSelectorOpen(!isModelSelectorOpen)}
-                className="bg-gray-800 hover:bg-gray-700 text-white p-2 rounded-lg transition-colors flex items-center gap-2"
-                title="Change model"
-              >
-                <FaBrain className="text-cyan-400" />
-                <span className="hidden sm:inline">
-                  {availableModels.find(m => m.id === currentModel)?.name || currentModel}
-                </span>
-              </button>
-              
-              {isModelSelectorOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-gray-800 border border-gray-700 rounded-lg shadow-xl z-10 animate-fadeIn">
-                  <ul>
-                    {availableModels.map((model) => (
-                      <li key={model.id}>
-                        <button
-                          onClick={() => changeModel(model.id)}
-                          className={`w-full text-left px-4 py-2 hover:bg-gray-700 transition-colors ${currentModel === model.id ? 'bg-indigo-600/30 font-bold' : ''}`}
-                        >
-                          {model.name}
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </div>
-            
-            <button 
-              onClick={clearChat}
-              className="bg-gray-800 hover:bg-gray-700 p-2 rounded-lg transition-colors"
-              title="Clear chat history"
-            >
-              <FaTrash className="text-red-400" />
-            </button>
-          </div>
-        </div>
+      <div className="bg-gray-900/70 backdrop-blur-xl border border-gray-800 rounded-xl p-3 mx-6 mt-16 shadow-2xl mb-6">
+  <div className="flex items-center justify-between">
+    <div className="flex items-center gap-4">
+      <div className="bg-gradient-to-r from-indigo-600 to-purple-600 p-3 rounded-lg">
+        <FaRobot className="text-white text-xl" />
       </div>
+      <div>
+        <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400">
+          AI Chat Assistant
+        </h1>
+        <p className="text-gray-300 font-medium">
+          AI-powered platform for code analysis, optimization, and debugging.
+        </p>
+      </div>
+    </div>
+
+    <div className="flex items-center space-x-4">
+      <div className="relative">
+        <button 
+          onClick={() => setIsModelSelectorOpen(!isModelSelectorOpen)}
+          className="bg-gray-800 hover:bg-gray-700 text-white p-2 rounded-lg transition-colors flex items-center gap-2"
+          title="Change model"
+        >
+          <FaBrain className="text-cyan-400" />
+          <span className="hidden sm:inline">
+            {availableModels.find(m => m.id === currentModel)?.name || currentModel}
+          </span>
+        </button>
+
+        {isModelSelectorOpen && (
+          <div className="absolute right-0 mt-2 w-48 bg-gray-800 border border-gray-700 rounded-lg shadow-xl z-10 animate-fadeIn">
+            <ul>
+              {availableModels.map((model) => (
+                <li key={model.id}>
+                  <button
+                    onClick={() => changeModel(model.id)}
+                    className={`w-full text-left px-4 py-2 hover:bg-gray-700 transition-colors ${
+                      currentModel === model.id ? 'bg-indigo-600/30 font-bold' : ''
+                    }`}
+                  >
+                    {model.name}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+
+      <button 
+        onClick={clearChat}
+        className="bg-gray-800 hover:bg-gray-700 p-2 rounded-lg transition-colors"
+        title="Clear chat history"
+      >
+        <FaTrash className="text-red-400" />
+      </button>
+    </div>
+  </div>
+</div>
+
 
       {/* Main content area - adjusted padding */}
       <div className="flex-1 flex flex-col p-4 pt-6">

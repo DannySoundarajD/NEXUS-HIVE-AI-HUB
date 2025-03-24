@@ -78,44 +78,40 @@ export default function CodeAssistant() {
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-gray-900 text-white">
-      {/* Fixed top navigation bar */}
-      <div className="fixed top-0 left-0 w-full z-10 bg-gray-900 bg-opacity-90 backdrop-blur-md border-b border-indigo-900 shadow-lg h-[120px]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between pt-[70px]">
-          <div className="flex items-center space-x-2">
-            <div className="h-9 w-9 rounded-full bg-gradient-to-r from-cyan-400 to-indigo-400 flex items-center justify-center shadow-lg">
-              <FaCode className="text-gray-900" />
-            </div>
-            <span className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400">
-              NEXUS HIVE
-            </span>
+      {/* Header section with consistent padding and better alignment */}
+      <div className="bg-gray-900/70 backdrop-blur-xl border border-gray-800 rounded-xl p-3 mx-6 mt-16 shadow-2xl mb-6">
+        <div className="flex items-center gap-4">
+          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 p-3 rounded-lg">
+            <FaCode className="text-white text-xl" />
+          </div>
+          <div>
+            <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400">
+            Code Assistant
+            </h1>
+            <p className="text-gray-300 font-medium">
+            Analyze, optimize, and debug your code with advanced AI models
+            </p>
           </div>
         </div>
       </div>
 
-      {/* Main content area - with increased padding to avoid fixed header */}
-      <div className="flex-1 pt-35 px-4 sm:px-6 lg:px-8 pb-8 max-w-7xl mx-auto w-full">
-        {/* Title header - now positioned below the fixed navbar */}
-        <div className="py-4 mb-6 border-b border-gray-700 animate-fadeIn">
-          <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-indigo-400">
-            Code Assistant
-          </h1>
-          <p className="text-gray-300 mt-1">Analyze, optimize, and debug your code with advanced AI models</p>
-        </div>
+      {/* Main content area with consistent padding */}
+      <div className="flex-1 px-6 pb-8 max-w-7xl mx-auto w-full">
+        
 
-        {/* Main content grid */}
+        {/* Main content grid with improved ratio */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          {/* Left panel - Code Input */}
+          {/* Left panel - Code Input with better vertical alignment */}
           <div className="lg:col-span-5 flex flex-col space-y-4">
-            {/* Selection controls */}
+            {/* Analysis type controls with equal button widths */}
             <div className="bg-gray-900/70 backdrop-blur-xl border border-gray-800 rounded-xl p-4 shadow-lg">
-              {/* Analysis type buttons */}
-              <div className="flex flex-wrap gap-2 mb-4">
+              <div className="grid grid-cols-3 gap-2 mb-4">
                 <button
                   onClick={() => setAnalysisType('analyze')}
-                  className={`px-4 py-2 rounded-lg flex items-center gap-2 transition-all duration-300 ${
+                  className={`px-4 py-2 rounded-lg flex items-center justify-center gap-2 transition-all duration-300 ${
                     analysisType === 'analyze'
-                      ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md transform scale-105'
-                      : 'bg-gray-700 bg-opacity-70 text-gray-300 hover:bg-gray-600 hover:scale-105'
+                      ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md'
+                      : 'bg-gray-700 bg-opacity-70 text-gray-300 hover:bg-gray-600'
                   }`}
                 >
                   <FaSearch size={14} />
@@ -123,10 +119,10 @@ export default function CodeAssistant() {
                 </button>
                 <button
                   onClick={() => setAnalysisType('optimize')}
-                  className={`px-4 py-2 rounded-lg flex items-center gap-2 transition-all duration-300 ${
+                  className={`px-4 py-2 rounded-lg flex items-center justify-center gap-2 transition-all duration-300 ${
                     analysisType === 'optimize'
-                      ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md transform scale-105'
-                      : 'bg-gray-700 bg-opacity-70 text-gray-300 hover:bg-gray-600 hover:scale-105'
+                      ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md'
+                      : 'bg-gray-700 bg-opacity-70 text-gray-300 hover:bg-gray-600'
                   }`}
                 >
                   <FaRocket size={14} />
@@ -134,10 +130,10 @@ export default function CodeAssistant() {
                 </button>
                 <button
                   onClick={() => setAnalysisType('debug')}
-                  className={`px-4 py-2 rounded-lg flex items-center gap-2 transition-all duration-300 ${
+                  className={`px-4 py-2 rounded-lg flex items-center justify-center gap-2 transition-all duration-300 ${
                     analysisType === 'debug'
-                      ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md transform scale-105'
-                      : 'bg-gray-700 bg-opacity-70 text-gray-300 hover:bg-gray-600 hover:scale-105'
+                      ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md'
+                      : 'bg-gray-700 bg-opacity-70 text-gray-300 hover:bg-gray-600'
                   }`}
                 >
                   <FaBug size={14} />
@@ -145,9 +141,9 @@ export default function CodeAssistant() {
                 </button>
               </div>
               
-              {/* Language and Model selectors - styled like Document Generator */}
+              {/* Language and Model selectors with equal sizing */}
               <div className="grid grid-cols-2 gap-4">
-                <div className="relative">
+                <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
                     Programming Language
                   </label>
@@ -171,7 +167,7 @@ export default function CodeAssistant() {
                   </div>
                 </div>
                 
-                <div className="relative">
+                <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
                     AI Engine
                   </label>
@@ -197,7 +193,7 @@ export default function CodeAssistant() {
               </div>
             </div>
 
-            {/* Code input - styled like Document Generator */}
+            {/* Code input with consistent height */}
             <div className="bg-gray-900/70 backdrop-blur-xl border border-gray-800 rounded-xl p-4 shadow-lg flex flex-col flex-1">
               <div className="flex items-center gap-3 mb-4">
                 <FaTerminal className="text-cyan-400 text-lg" />
@@ -212,12 +208,12 @@ export default function CodeAssistant() {
                   value={code}
                   onChange={(e) => setCode(e.target.value)}
                   placeholder={`Enter your ${language} code here...`}
-                  className="w-full h-96 p-4 bg-gray-800/80 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 text-gray-200 font-mono text-sm resize-none"
+                  className="w-full h-full min-h-[400px] p-4 bg-gray-800/80 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 text-gray-200 font-mono text-sm resize-none"
                 />
               </div>
             </div>
 
-            {/* Conditional inputs based on analysis type */}
+            {/* Conditional inputs with consistent styling */}
             {analysisType === 'optimize' && (
               <div className="bg-gray-900/70 backdrop-blur-xl border border-gray-800 rounded-xl p-4 shadow-lg animate-fadeIn">
                 <label className="block text-sm font-medium text-gray-300 mb-2">Optimization Goal</label>
@@ -244,11 +240,11 @@ export default function CodeAssistant() {
               </div>
             )}
 
-            {/* Action button */}
+            {/* Action button with consistent styling */}
             <button
               onClick={handleCodeAnalysis}
               disabled={loading || !code.trim()}
-              className={`w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white p-3 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 font-medium text-lg disabled:opacity-50 disabled:cursor-not-allowed shadow-lg ${
+              className={`w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white p-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 font-medium text-lg shadow-lg ${
                 loading || !code.trim() ? 'opacity-50 cursor-not-allowed' : ''
               }`}
             >
@@ -272,20 +268,20 @@ export default function CodeAssistant() {
             </button>
           </div>
 
-          {/* Right panel - Results */}
+          {/* Right panel - Results with equal height to match left panel */}
           <div className="lg:col-span-7 flex flex-col">
-            <div className="bg-gray-900/70 backdrop-blur-xl border border-gray-800 rounded-xl shadow-lg flex flex-col flex-1">
+            <div className="bg-gray-900/70 backdrop-blur-xl border border-gray-800 rounded-xl shadow-lg flex flex-col h-full">
               <div className="p-4 border-b border-gray-700 flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <FaLightbulb className="text-cyan-400 text-lg" />
                   <h2 className="text-xl font-semibold text-white">AI Insights</h2>
                 </div>
                 <div className="text-sm text-gray-400">
-                  {result && `Using ${selectedModel}`}
+                  {result && `Using ${models.find(m => m.id === selectedModel)?.name || selectedModel}`}
                 </div>
               </div>
               
-              <div className="flex-1 overflow-auto p-4 bg-gray-800/80 rounded-lg border border-gray-700 m-4 shadow-inner">
+              <div className="flex-1 overflow-auto p-4 bg-gray-800/80 rounded-lg border border-gray-700 m-4 shadow-inner min-h-[520px]">
                 {result ? (
                   <div className="prose prose-invert max-w-none animate-fadeIn">
                     <ReactMarkdown
@@ -314,19 +310,19 @@ export default function CodeAssistant() {
                     </ReactMarkdown>
                   </div>
                 ) : (
-                  <div className="flex flex-col items-center justify-center h-full text-gray-400 space-y-4">
-                    <div className="w-16 h-16 rounded-full bg-gray-700/50 flex items-center justify-center">
+                  <div className="flex flex-col items-center justify-center h-full text-gray-400 space-y-6">
+                    <div className="w-20 h-20 rounded-full bg-gray-700/50 flex items-center justify-center">
                       {
                         {
-                          'analyze': <FaSearch size={24} />,
-                          'optimize': <FaRocket size={24} />,
-                          'debug': <FaBug size={24} />
+                          'analyze': <FaSearch size={32} />,
+                          'optimize': <FaRocket size={32} />,
+                          'debug': <FaBug size={32} />
                         }[analysisType]
                       }
                     </div>
 
                     <div className="text-center">
-                      <p className="text-xl mb-2">Ready to {analysisType} your code</p>
+                      <p className="text-2xl mb-2">Ready to {analysisType} your code</p>
                       <p className="text-gray-500">Enter your code and click the button to get started</p>
                     </div>
                   </div>
@@ -337,8 +333,8 @@ export default function CodeAssistant() {
         </div>
       </div>
       
-      {/* Footer */}
-      <div className="mt-6 text-center text-gray-400 text-sm">
+      {/* Footer with consistent padding */}
+      <div className="mt-8 mb-6 text-center text-gray-400 text-sm">
         <p>Powered by NEXUS HIVE AI Engine &copy; {new Date().getFullYear()}</p>
       </div>
     </div>

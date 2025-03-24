@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
-import { FaCode, FaClipboard, FaDownload, FaSpinner, FaFlask, FaMagic } from 'react-icons/fa';
+import { FaCode, FaClipboard, FaDownload, FaSpinner, FaFlask, FaMagic, FaRobot, FaTerminal, FaFileAlt } from 'react-icons/fa';
 import axios from 'axios';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -203,87 +203,123 @@ export default function NlpToCodeGenerator() {
   };
 
   return (
-    <div className="flex flex-col h-full">
-      <div className="bg-white dark:bg-gray-800 p-4 shadow-md mb-4 rounded-lg">
-        <h1 className="text-xl font-bold flex items-center gap-2">
-          <FaCode className="text-blue-500" />
-          NLP to Code Generator
-        </h1>
-        <p className="text-gray-600 dark:text-gray-400">
-          Generate code from natural language descriptions using the CodeGemma AI model.
-        </p>
+    <div className="flex flex-col h-full min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-gray-900 p-6">
+      <div className="bg-gray-900/70 backdrop-blur-xl border border-gray-800 rounded-xl p-6 mt-13 shadow-2xl mb-6">
+        <div className="flex items-center gap-4">
+          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 p-3 rounded-lg">
+            <FaRobot className="text-white text-2xl" />
+          </div>
+          <div>
+            <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400">
+              NLP to Code Generator
+            </h1>
+            <p className="text-gray-300 font-medium">
+              Generate code from natural language descriptions using the CodeGemma AI model
+            </p>
+          </div>
+        </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 flex-1">
-        <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md">
-          <h2 className="text-lg font-semibold mb-4">Describe Your Code</h2>
-          <div className="flex flex-col gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 flex-1">
+        <div className="bg-gray-900/70 backdrop-blur-xl border border-gray-800 rounded-xl p-6 shadow-2xl">
+          <div className="flex items-center gap-3 mb-6">
+            <FaTerminal className="text-cyan-400 text-lg" />
+            <h2 className="text-xl font-semibold text-white">Describe Your Code</h2>
+          </div>
+          
+          <div className="space-y-6">
             <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                  Language
+              <div className="relative">
+                <label className="block text-sm font-medium text-gray-300 mb-2">
+                  Programming Language
                 </label>
-                <select
-                  value={language}
-                  onChange={(e) => setLanguage(e.target.value)}
-                  className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                >
-                  {languages.map((lang) => (
-                    <option key={lang.value} value={lang.value}>
-                      {lang.label}
-                    </option>
-                  ))}
-                </select>
+                <div className="relative">
+                  <select
+                    value={language}
+                    onChange={(e) => setLanguage(e.target.value)}
+                    className="w-full p-3 bg-gray-800/80 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 text-gray-200 appearance-none"
+                  >
+                    {languages.map((lang) => (
+                      <option key={lang.value} value={lang.value}>
+                        {lang.label}
+                      </option>
+                    ))}
+                  </select>
+                  <div className="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none">
+                    <svg className="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                </div>
               </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                  AI Model
+              
+              <div className="relative">
+                <label className="block text-sm font-medium text-gray-300 mb-2">
+                  AI Engine
                 </label>
-                <select
-                  value={model}
-                  onChange={(e) => setModel(e.target.value)}
-                  className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                >
-                  {availableModels.map((m) => (
-                    <option key={m.name} value={m.name}>
-                      {m.name}
-                    </option>
-                  ))}
-                </select>
+                <div className="relative">
+                  <select
+                    value={model}
+                    onChange={(e) => setModel(e.target.value)}
+                    className="w-full p-3 bg-gray-800/80 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 text-gray-200 appearance-none"
+                  >
+                    {availableModels.map((m) => (
+                      <option key={m.name} value={m.name}>
+                        {m.name}
+                      </option>
+                    ))}
+                  </select>
+                  <div className="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none">
+                    <svg className="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                </div>
               </div>
             </div>
             
-            <textarea
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              placeholder="Describe the code you want to generate in natural language..."
-              className="p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white h-145"
-            />
+            <div className="relative">
+              <textarea
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                placeholder="Describe the code you want to generate in natural language..."
+                className="w-full h-64 p-4 bg-gray-800/80 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 text-gray-200 font-mono text-sm resize-none"
+              />
+            </div>
             
             <button
               onClick={handleGenerateCode}
               disabled={loading}
-              className="bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600 transition-colors disabled:bg-gray-400 flex items-center gap-2 justify-center"
+              className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white p-3 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 font-medium text-lg disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
             >
-              {loading ? <FaSpinner className="animate-spin" /> : <FaCode />}
-              Generate Code
+              {loading ? (
+                <>
+                  <FaSpinner className="animate-spin" />
+                  <span>Processing...</span>
+                </>
+              ) : (
+                <>
+                  <FaCode />
+                  <span>Generate Code</span>
+                </>
+              )}
             </button>
             
             {activeTab === 'improve' && (
               <div className="mt-4">
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                <label className="block text-sm font-medium text-gray-300 mb-2">
                   Improvement Requirements
                 </label>
                 <textarea
                   value={requirements}
                   onChange={(e) => setRequirements(e.target.value)}
                   placeholder="Describe how you want to improve the code (e.g., optimize for performance, add better error handling)..."
-                  className="p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white h-24 w-full"
+                  className="w-full h-32 p-4 bg-gray-800/80 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 text-gray-200 font-mono text-sm resize-none"
                 />
                 <button
                   onClick={handleImproveCode}
                   disabled={loading || !generatedCode}
-                  className="mt-2 bg-purple-500 text-white p-2 rounded-lg hover:bg-purple-600 transition-colors disabled:bg-gray-400 flex items-center gap-2 justify-center w-full"
+                  className="w-full mt-4 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white p-3 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 font-medium disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
                 >
                   {loading ? <FaSpinner className="animate-spin" /> : <FaMagic />}
                   Improve Code
@@ -293,53 +329,57 @@ export default function NlpToCodeGenerator() {
           </div>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md flex flex-col">
-          <div className="flex justify-between items-center mb-4">
-            <div className="flex space-x-4">
+        <div className="bg-gray-900/70 backdrop-blur-xl border border-gray-800 rounded-xl p-6 shadow-2xl flex flex-col">
+          <div className="flex justify-between items-center mb-6">
+            <div className="flex items-center space-x-4">
               <button
                 onClick={() => setActiveTab('code')}
-                className={`px-3 py-1 rounded-t-lg ${
+                className={`px-4 py-2 rounded-lg transition-all duration-200 flex items-center gap-2 ${
                   activeTab === 'code'
-                    ? 'bg-blue-500 text-white'
-                    : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
+                    ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md'
+                    : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
                 }`}
               >
-                Generated Code
+                <FaCode />
+                <span>Generated Code</span>
               </button>
               <button
                 onClick={() => setActiveTab('tests')}
-                className={`px-3 py-1 rounded-t-lg ${
+                className={`px-4 py-2 rounded-lg transition-all duration-200 flex items-center gap-2 ${
                   activeTab === 'tests'
-                    ? 'bg-blue-500 text-white'
-                    : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
+                    ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md'
+                    : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
                 }`}
               >
-                Test Cases
+                <FaFlask />
+                <span>Test Cases</span>
               </button>
               <button
                 onClick={() => setActiveTab('improve')}
-                className={`px-3 py-1 rounded-t-lg ${
+                className={`px-4 py-2 rounded-lg transition-all duration-200 flex items-center gap-2 ${
                   activeTab === 'improve'
-                    ? 'bg-blue-500 text-white'
-                    : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
+                    ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md'
+                    : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
                 }`}
               >
-                Improved Code
+                <FaMagic />
+                <span>Improved Code</span>
               </button>
             </div>
+            
             <div className="flex gap-2">
               {activeTab === 'code' && generatedCode && (
                 <>
                   <button
                     onClick={() => handleCopyToClipboard(generatedCode)}
-                    className="p-2 text-gray-500 hover:text-blue-500"
+                    className="p-2 text-gray-400 hover:text-cyan-400 transition-colors rounded-lg hover:bg-gray-800"
                     title="Copy to clipboard"
                   >
                     <FaClipboard />
                   </button>
                   <button
                     onClick={() => handleDownload(generatedCode, 'generated-code')}
-                    className="p-2 text-gray-500 hover:text-blue-500"
+                    className="p-2 text-gray-400 hover:text-cyan-400 transition-colors rounded-lg hover:bg-gray-800"
                     title="Download code"
                   >
                     <FaDownload />
@@ -350,14 +390,14 @@ export default function NlpToCodeGenerator() {
                 <>
                   <button
                     onClick={() => handleCopyToClipboard(testCode)}
-                    className="p-2 text-gray-500 hover:text-blue-500"
+                    className="p-2 text-gray-400 hover:text-cyan-400 transition-colors rounded-lg hover:bg-gray-800"
                     title="Copy to clipboard"
                   >
                     <FaClipboard />
                   </button>
                   <button
                     onClick={() => handleDownload(testCode, 'test-code')}
-                    className="p-2 text-gray-500 hover:text-blue-500"
+                    className="p-2 text-gray-400 hover:text-cyan-400 transition-colors rounded-lg hover:bg-gray-800"
                     title="Download test code"
                   >
                     <FaDownload />
@@ -368,14 +408,14 @@ export default function NlpToCodeGenerator() {
                 <>
                   <button
                     onClick={() => handleCopyToClipboard(improvedCode)}
-                    className="p-2 text-gray-500 hover:text-blue-500"
+                    className="p-2 text-gray-400 hover:text-cyan-400 transition-colors rounded-lg hover:bg-gray-800"
                     title="Copy to clipboard"
                   >
                     <FaClipboard />
                   </button>
                   <button
                     onClick={() => handleDownload(improvedCode, 'improved-code')}
-                    className="p-2 text-gray-500 hover:text-blue-500"
+                    className="p-2 text-gray-400 hover:text-cyan-400 transition-colors rounded-lg hover:bg-gray-800"
                     title="Download improved code"
                   >
                     <FaDownload />
@@ -385,7 +425,7 @@ export default function NlpToCodeGenerator() {
             </div>
           </div>
           
-          <div className="flex-1 overflow-auto">
+          <div className="flex-1 overflow-auto bg-gray-800/80 rounded-lg border border-gray-700 shadow-inner">
             {activeTab === 'code' && (
               <>
                 {generatedCode ? (
@@ -397,8 +437,11 @@ export default function NlpToCodeGenerator() {
                     {generatedCode}
                   </SyntaxHighlighter>
                 ) : (
-                  <div className="flex items-center justify-center h-full text-gray-500">
-                    Enter a description and generate code to see results here
+                  <div className="flex flex-col items-center justify-center h-full text-gray-400 gap-4 p-6">
+                    <div className="w-16 h-16 rounded-full bg-gray-700/50 flex items-center justify-center">
+                      <FaCode className="text-gray-500 text-2xl" />
+                    </div>
+                    <p className="text-center">Enter a description and generate code to see results here</p>
                   </div>
                 )}
               </>
@@ -415,12 +458,15 @@ export default function NlpToCodeGenerator() {
                     {testCode}
                   </SyntaxHighlighter>
                 ) : (
-                  <div className="flex flex-col items-center justify-center h-full">
-                    <p className="text-gray-500 mb-4">No test cases generated yet</p>
+                  <div className="flex flex-col items-center justify-center h-full text-gray-400 gap-4 p-6">
+                    <div className="w-16 h-16 rounded-full bg-gray-700/50 flex items-center justify-center">
+                      <FaFlask className="text-gray-500 text-2xl" />
+                    </div>
+                    <p className="text-center">No test cases generated yet</p>
                     <button
                       onClick={handleGenerateTests}
                       disabled={loading || !generatedCode}
-                      className="bg-green-500 text-white p-2 rounded-lg hover:bg-green-600 transition-colors disabled:bg-gray-400 flex items-center gap-2"
+                      className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white px-4 py-2 rounded-lg transition-all duration-300 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {loading ? <FaSpinner className="animate-spin" /> : <FaFlask />}
                       Generate Test Cases
@@ -441,16 +487,25 @@ export default function NlpToCodeGenerator() {
                     {improvedCode}
                   </SyntaxHighlighter>
                 ) : (
-                  <div className="flex items-center justify-center h-full text-gray-500">
-                    {generatedCode ? 
-                      "Enter improvement requirements and click 'Improve Code'" : 
-                      "Generate code first before requesting improvements"}
+                  <div className="flex flex-col items-center justify-center h-full text-gray-400 gap-4 p-6">
+                    <div className="w-16 h-16 rounded-full bg-gray-700/50 flex items-center justify-center">
+                      <FaMagic className="text-gray-500 text-2xl" />
+                    </div>
+                    <p className="text-center">
+                      {generatedCode 
+                        ? "Enter improvement requirements and click 'Improve Code'" 
+                        : "Generate code first before requesting improvements"}
+                    </p>
                   </div>
                 )}
               </>
             )}
           </div>
         </div>
+      </div>
+      
+      <div className="mt-6 text-center text-gray-400 text-sm">
+        <p>Powered by CodeGemma AI &copy; {new Date().getFullYear()}</p>
       </div>
     </div>
   );
